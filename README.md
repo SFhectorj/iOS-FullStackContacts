@@ -33,16 +33,14 @@ Designers: Due by Tuesday - to give the SWEs time to code the design
 1) Designing a simple UI (First Name, Last Name, phone number fields and Email)
 	2) Create button
 3) Save button
-Save the wireframe/mockup to this folder
-https://drive.google.com/drive/folders/1wKF5VZ_CWB2O1_9-6Mm6SmX8hYWprDMm
+Save the wireframe/mockup to the google design folder.
 
 4) Begin work on phase 2:
 Relationship to User/Owner
 Birth Date - Month and Day
 Emergency contact
 2nd 10 Digit Phone number
-Save the wireframe/mockup to this folder
-https://drive.google.com/drive/folders/1-HjA3CApD8JnjFw9qj4XZGZSyBh4P1PP
+Save the wireframe/mockup to the google design folder.
 
 Product Manager:
 Review the designer’s designs
@@ -77,8 +75,7 @@ Code notifications, relationship indicator, emergency contact…
 Designers:
 Design enhanced UI (see above)
 Create/review/update button images…
-Save the wireframe/mockup to this folder
-https://drive.google.com/drive/folders/1wKF5VZ_CWB2O1_9-6Mm6SmX8hYWprDMm
+Save the wireframe/mockup to the google design folder.
 Product Manager:
 Review the Phase 2 feature list to make sure these are still the correct features for this phase
 Review the designer’s designs
@@ -134,8 +131,7 @@ Code phase 3 UI and data modifications (see above)
 Code Phase 3 features
 Designers:
 Design phase 3 UI (see above)
-Save the wireframe/mockup to this folder
-https://drive.google.com/drive/folders/1wKF5VZ_CWB2O1_9-6Mm6SmX8hYWprDMm
+Save the wireframe/mockup to the google design folder.
 Product Manager:
 Review the Phase 3 feature list to make sure these are still the correct features for this phase
 Review the designer’s designs
@@ -167,8 +163,7 @@ Code phase 4 UI and data modifications (see above)
 Code Phase 4 features
 Designers:
 Design phase 4 UI (see above)
-Save the wireframe/mockup to this folder
-https://drive.google.com/drive/folders/1wKF5VZ_CWB2O1_9-6Mm6SmX8hYWprDMm
+Save the wireframe/mockup to the google design folder.
 Product Manager:
 Review the Phase 4 feature list to make sure these are still the correct features for this phase
 Review the designer’s designs
