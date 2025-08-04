@@ -6,7 +6,8 @@
 //
 import Foundation
 
-class Contact: Codable {
+class Contact: Codable, Equatable {
+    var id = UUID()
     var firstName: String
     var lastName: String
     var phoneNumber: String
@@ -16,10 +17,16 @@ class Contact: Codable {
         return "\(firstName) \(lastName)"
     }
     
-    init(firstName:String, lastName:String, phoneNumber:String) {
+    init(id: UUID = UUID(), firstName: String, lastName: String, phoneNumber: String, isEmergency: Bool = false) {
+        self.id = id
         self.firstName = firstName
         self.lastName = lastName
         self.phoneNumber = phoneNumber
+        self.isEmergency = isEmergency
+    }
+    
+    static func == (lhs: Contact, rhs: Contact) -> Bool {
+        return lhs.id == rhs.id
     }
 }
 

@@ -29,13 +29,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let contact = contacts[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
-        if contact.isEmergency {
+        if contact == myProfile {
+            cell.textLabel?.text = "👤 My Profile"
+        } else if contact.isEmergency {
             cell.textLabel?.text = "🚨 \(contact.fullName)"
         } else {
             cell.textLabel?.text = contact.fullName
         }
         cell.detailTextLabel?.text = contact.phoneNumber
         return cell
+
     }
     
     // Add contact
@@ -79,6 +82,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
            let profile = try? JSONDecoder().decode(Contact.self, from: data) {
             myProfile = profile
         }
+    }
+    
+    // Save user contact info
+    func saveMyProfile() {
+        guard let profile = myProfile,
+              let url = getDocumentURL()?.appendingPathComponent("myProfile.json"),
+              let data = try? JSONEncoder().encode(profile) else { return }
+        try? data.write(to: url)
     }
     
     // Get document directory
@@ -159,6 +170,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 return $0.isEmergency
             }
             return $0.lastName < $1.lastName
+        }
+        // Ensure profile is at the top
+        if let profile = myProfile {
+            contacts.removeAll { $0 == profile }
+            contacts.insert(profile, at: 0)
         }
     }
     
