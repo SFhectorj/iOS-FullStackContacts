@@ -69,6 +69,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         present(alert, animated: true)
     }
     
+    // Add User Profile/contact
+    var myProfile: Contact?
+    
+    // Load user contact profile
+    func loadMyProfile() {
+        if let url = getDocumentURL()?.appendingPathComponent("myProfile.json"),
+           let data = try? Data(contentsOf: url),
+           let profile = try? JSONDecoder().decode(Contact.self, from: data) {
+            myProfile = profile
+        }
+    }
+    
     // Get document directory
     func getDocumentURL() -> URL? {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
