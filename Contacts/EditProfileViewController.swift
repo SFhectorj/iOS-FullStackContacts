@@ -28,7 +28,7 @@ class EditProfileViewController: UIViewController {
         }
     }
 
-    @IBAction func saveProfileTapped(_ sender: UIButton) {
+    @IBAction func saveProfileTapped(_ sender: UIBarButtonItem) {
         guard let first = firstNameTextField.text,
               let last = lastNameTextField.text,
               let phone = phoneNumberTextField.text,

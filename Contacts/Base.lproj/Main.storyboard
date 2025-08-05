@@ -57,6 +57,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9HN-hN-ahl">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="ZF0-gr-hR7">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="UUa-lZ-whc" customClass="editProfileTapped">
+                                <rect key="frame" x="16" y="5" width="100" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="My Profile"/>
+                                <connections>
+                                    <action selector="editProfileTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zwG-id-LQd"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <action selector="editProfileTapped:" destination="BYZ-38-t0r" id="qhR-VW-lL4"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="teO-el-w44">
                             <connections>
                                 <action selector="addContactTapped:" destination="BYZ-38-t0r" id="94c-Qv-cte"/>
@@ -145,7 +159,7 @@
         <!--Edit Profile View Controller-->
         <scene sceneID="mLM-sY-qv2">
             <objects>
-                <viewController storyboardIdentifier="EditProfileViewController" id="O8h-qX-oLX" customClass="EditProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditProfileViewController" id="O8h-qX-oLX" customClass="EditProfileViewController" customModule="Contacts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Mc-su-LTO">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,24 +176,32 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fyH-IX-X03">
+                                <rect key="frame" x="138" y="326" width="117" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WTU-yL-uxQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="DBy-D4-TEY">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="zQa-qk-hNp">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="O2u-kF-z6m">
-                                <rect key="frame" x="-37" y="-17" width="87" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="zQa-qk-hNp">
+                            <connections>
+                                <action selector="saveProfileTapped:" destination="O8h-qX-oLX" id="82t-HY-KvS"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="firstNameTextField" destination="cuB-Sq-b09" id="ebN-6y-9bc"/>
+                        <outlet property="lastNameTextField" destination="zmS-f7-uqV" id="JXR-U9-UKU"/>
+                        <outlet property="phoneNumberTextField" destination="fyH-IX-X03" id="cMu-L5-tba"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uah-4z-hLP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4657.2519083969464" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="2766" y="753"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7JV-6G-LNy">
@@ -233,7 +255,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tdZ-GN-u7u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3730.5343511450378" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="1839" y="753"/>
         </scene>
     </scenes>
     <resources>

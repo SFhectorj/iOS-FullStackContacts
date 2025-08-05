@@ -72,6 +72,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         present(alert, animated: true)
     }
     
+    // Tap My Profile
+    @IBAction func editProfileTapped(_ sender: UIBarButtonItem) {
+        print("Edit Profile tapped!")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let profileVC = storyboard.instantiateViewController(withIdentifier: "EditProfileViewController") as? EditProfileViewController {
+            profileVC.profile = myProfile
+            profileVC.onSaveProfile = { updatedProfile in
+                self.myProfile = updatedProfile
+                self.saveMyProfile()
+                self.sortContacts()
+                self.tableView.reloadData()
+            }
+            navigationController?.pushViewController(profileVC, animated: true)
+        }
+    }
+    
     // Add User Profile/contact
     var myProfile: Contact?
     
