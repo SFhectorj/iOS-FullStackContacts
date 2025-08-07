@@ -11,6 +11,7 @@ class Contact: Codable, Equatable {
     var firstName: String
     var lastName: String
     var phoneNumber: String
+    var relationship: String?
     var isEmergency: Bool = false
     
     var fullName: String{

@@ -58,7 +58,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="9HN-hN-ahl">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="ZF0-gr-hR7">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="UUa-lZ-whc" customClass="editProfileTapped">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="UUa-lZ-whc" customClass="editProfileTapped">
                                 <rect key="frame" x="16" y="5" width="100" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -132,6 +132,22 @@
                                 <rect key="frame" x="261" y="666" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Relationship: [value]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O63-9b-xU1">
+                                <rect key="frame" x="116" y="545" width="160" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33B-Nd-Pg3">
+                                <rect key="frame" x="121" y="586" width="147" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Set Relationship"/>
+                                <connections>
+                                    <action selector="setRelationshipTapped:" destination="xve-3D-CBK" eventType="touchUpInside" id="hHA-bE-q0N"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pa0-Ki-pYC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -150,6 +166,7 @@
                         <outlet property="firstNameTextField" destination="Lxf-4L-WTc" id="e7m-5b-rAs"/>
                         <outlet property="lastNameTextField" destination="cZk-aL-IP2" id="QOS-SM-YEI"/>
                         <outlet property="phoneNumberTextField" destination="6E7-Zq-xef" id="fzq-zx-KuE"/>
+                        <outlet property="relationshipLabel" destination="O63-9b-xU1" id="s7V-sn-wdT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tvI-Yr-cLj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

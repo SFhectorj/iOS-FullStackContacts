@@ -18,6 +18,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         title = "Contacts"
         tableView.delegate = self
         tableView.dataSource = self
+        loadMyProfile()
         loadContacts()
     }
     
@@ -166,9 +167,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let contact = contacts[indexPath.row]
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
         if let detailVC = storyboard.instantiateViewController(withIdentifier: "ContactDetailViewController") as? ContactDetailViewController {
             detailVC.contact = contact
-
+            detailVC.onUpdate = { updated in
+                if let index = self.contacts.firstIndex(where: { $0.id == updated.id }) {
+                    self.contacts[index] = updated
+                    self.saveContacts()
+                    self.tableView.reloadData()
+                }
+            }
             detailVC.onDelete = {
                 self.contacts.removeAll { $0 === contact } // === only works if Contact is a class
                 self.saveContacts()
@@ -189,7 +197,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         // Ensure profile is at the top
         if let profile = myProfile {
-            contacts.removeAll { $0 == profile }
+            contacts.removeAll { $0.id == profile.id }
             contacts.insert(profile, at: 0)
         }
     }

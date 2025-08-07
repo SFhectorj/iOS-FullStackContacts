@@ -10,21 +10,54 @@ import UIKit
 class ContactDetailViewController: UIViewController {
     var contact: Contact?
     var onDelete: (() -> Void)?
+    var onUpdate: ((Contact) -> Void)?
     
     
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var emergencyContactSwitch: UISwitch!
+    @IBOutlet weak var relationshipLabel: UILabel!
+    
+    
+    let relationshipOptions = ["Spouse", "Child", "Parent", "Sibling", "Other"]
+    
+    @IBAction func setRelationshipTapped(_ sender: UIButton) {
+        // popup as alert
+        let alert = UIAlertController(title: "Relationship", message: nil, preferredStyle: .actionSheet)
+        
+        for option in relationshipOptions {
+            alert.addAction(UIAlertAction(title: option, style: .default, handler: { _ in
+                self.contact?.relationship = option
+                self.relationshipLabel.text = "Relationship: \(option)"
+                self.saveContactChanges()
+            }))
+        }
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alert, animated: true)
+        
+    }
+    
     
     func deleteContact() {
         onDelete?()
         navigationController?.popViewController(animated: true)
     }
     
+    // Save relationship to contact
+    func saveContactChanges() {
+        if let updatedContact = contact {
+            onUpdate?(updatedContact)
+        }
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Edit Contact"
+        title = contact?.fullName ?? "Contact"
+        relationshipLabel.text = "Relationship: \(contact?.relationship ?? "Not Set")"
         
         if let contact = contact {
             firstNameTextField.text = contact.firstName
