@@ -23,7 +23,7 @@ class ContactDetailViewController: UIViewController {
     let relationshipOptions = ["Spouse", "Child", "Parent", "Sibling", "Other"]
     
     @IBAction func setRelationshipTapped(_ sender: UIButton) {
-        // popup as alert
+        // popup as list
         let alert = UIAlertController(title: "Relationship", message: nil, preferredStyle: .actionSheet)
         
         for option in relationshipOptions {

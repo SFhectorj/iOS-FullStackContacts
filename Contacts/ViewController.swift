@@ -20,16 +20,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
         loadMyProfile()
         loadContacts()
+        setupFilterButtons()
     }
     
     // Setup the tableview that displays the list
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contacts.count
+        return filteredContacts().count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let contact = contacts[indexPath.row]
+        let contact = filteredContacts()[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
+        
         if contact == myProfile {
             cell.textLabel?.text = "👤 My Profile"
         } else if contact.isEmergency {
@@ -37,13 +38,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } else {
             cell.textLabel?.text = contact.fullName
         }
-        cell.detailTextLabel?.text = contact.phoneNumber
+        
+        cell.detailTextLabel?.text = contact.relationship ?? contact.phoneNumber
         return cell
-
+    }
+    
+    func filteredContacts() -> [Contact] {
+        if activeFilter == "All" {
+            return contacts.sorted { $0.lastName < $1.lastName }
+        } else {
+            return contacts
+                .filter { $0.relationship == activeFilter }
+                .sorted { $0.lastName < $1.lastName }
+        }
     }
     
     // Add contact
-    
     @IBAction func addContactTapped(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Add Contact", message: "Enter contact information", preferredStyle: .alert)
         
@@ -208,5 +218,45 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.reloadData()
         saveContacts()
         sortContacts()
+    }
+    
+    @IBOutlet weak var filterStackView: UIStackView!
+    
+    let relationshipFilters = ["All", "Spouse", "Child", "Parent", "Sibling", "Other"]
+    var activeFilter: String = "All"
+    
+    func setupFilterButtons() {
+        filterStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        
+        for filter in relationshipFilters {
+            let button = UIButton(type: .system)
+            
+            if #available(iOS 15.0, *) {
+                button.configuration = nil
+            }
+            
+            button.setTitle(filter, for: .normal)
+            button.setTitleColor(.white, for: .normal)
+            button.backgroundColor = (filter == activeFilter) ? UIColor.systemBlue : UIColor.systemGray4
+            button.layer.cornerRadius = 15
+            button.contentEdgeInsets = UIEdgeInsets(top: 6, left: 12, bottom: 6, right: 12)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+            
+            //stop buttons from stretching
+            button.setContentHuggingPriority(.required, for: .horizontal)
+            button.setContentHuggingPriority(.required, for: .vertical)
+            
+            button.sizeToFit()
+            button.addTarget(self, action: #selector(filterTapped(_:)), for: .touchUpInside)
+            
+            filterStackView.addArrangedSubview(button)
+        }
+    }
+    
+    @objc func filterTapped(_ sender: UIButton) {
+        guard let title = sender.title(for: .normal) else { return }
+        activeFilter = title
+        setupFilterButtons() // Refresh pill highlighting
+        tableView.reloadData()
     }
 }
