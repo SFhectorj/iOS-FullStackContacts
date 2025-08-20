@@ -21,6 +21,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         loadMyProfile()
         loadContacts()
         setupFilterButtons()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Logout",
+            style: .plain,
+            target: self,
+            action: #selector(logoutTapped)
+        )
+        
+        // Style the add contact button
+        addContact.layer.cornerRadius = 30
+        addContact.clipsToBounds = true
+        addContact.setTitle("+", for:.normal)
+        addContact.titleLabel?.font = UIFont.systemFont(ofSize: 30, weight: .bold)
+        addContact.backgroundColor = .systemBlue
+        addContact.setTitleColor(.white, for: .normal)
     }
     
     // Setup the tableview that displays the list
@@ -53,8 +68,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    // Add Contact Button
+    @IBOutlet weak var addContact: UIButton!
+    
     // Add contact
-    @IBAction func addContactTapped(_ sender: UIBarButtonItem) {
+    @IBAction func addContactTapped(_ sender: UIButton) {
         let alert = UIAlertController(title: "Add Contact", message: "Enter contact information", preferredStyle: .alert)
         
         alert.addTextField { $0.placeholder = "Name" }
@@ -258,5 +276,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         activeFilter = title
         setupFilterButtons() // Refresh pill highlighting
         tableView.reloadData()
+    }
+    
+    // Log Out and return to login page
+    @objc func logoutTapped() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let sceneDelegate = windowScene.delegate as? SceneDelegate,
+              // Create a new instance of loginviewcontroller; Used to return to log in screen
+              let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") else {
+            return
+        }
+        
+        //Logout logic sets the app’s main window’s rootViewController to the loginVC, effectively logging the user out and removing previous screens.
+        sceneDelegate.window?.rootViewController = loginVC
+        sceneDelegate.window?.makeKeyAndVisible()   //makes the app's window the "key" window
     }
 }

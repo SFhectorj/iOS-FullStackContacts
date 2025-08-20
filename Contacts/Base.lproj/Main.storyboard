@@ -11,34 +11,29 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Contacts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Contacts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3B7-fw-XnQ">
-                                <rect key="frame" x="0.0" y="162" width="393" height="53"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ecB-yW-yf3">
-                                        <rect key="frame" x="8" y="8" width="377" height="37"/>
-                                    </stackView>
-                                </subviews>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="233" verticalHuggingPriority="253" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnY-x3-uSf">
+                                <rect key="frame" x="179" y="408" width="35" height="35"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
-                                    <constraint firstItem="ecB-yW-yf3" firstAttribute="trailing" secondItem="3B7-fw-XnQ" secondAttribute="trailingMargin" id="2Cr-VE-L6A"/>
-                                    <constraint firstItem="ecB-yW-yf3" firstAttribute="centerY" secondItem="3B7-fw-XnQ" secondAttribute="centerY" id="Eum-dn-Hu9"/>
-                                    <constraint firstItem="ecB-yW-yf3" firstAttribute="bottom" secondItem="3B7-fw-XnQ" secondAttribute="bottomMargin" id="TsS-f3-KGG"/>
-                                    <constraint firstItem="ecB-yW-yf3" firstAttribute="leading" secondItem="3B7-fw-XnQ" secondAttribute="leadingMargin" id="X07-5R-AXA"/>
-                                    <constraint firstItem="ecB-yW-yf3" firstAttribute="centerX" secondItem="3B7-fw-XnQ" secondAttribute="centerX" id="ZEe-eO-SYM"/>
-                                    <constraint firstItem="ecB-yW-yf3" firstAttribute="top" secondItem="3B7-fw-XnQ" secondAttribute="topMargin" id="aUr-VD-X1h"/>
+                                    <constraint firstAttribute="width" constant="60" id="BK7-mc-InX"/>
+                                    <constraint firstAttribute="height" constant="60" id="g1d-z8-amT"/>
                                 </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="bwn-My-WMA"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="AoH-h2-tsF"/>
-                            </scrollView>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="+"/>
+                                <connections>
+                                    <action selector="addContactTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dBu-rD-cF9"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Q0g-EE-G87">
-                                <rect key="frame" x="0.0" y="223" width="393" height="629"/>
+                                <rect key="frame" x="0.0" y="102" width="393" height="750"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="629" id="UYQ-Se-lDN"/>
+                                    <constraint firstAttribute="height" constant="750" id="UYQ-Se-lDN"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactCell" textLabel="Ado-V2-Lls" detailTextLabel="pmf-mO-sh2" style="IBUITableViewCellStyleSubtitle" id="R5i-6C-gRv">
@@ -64,9 +59,30 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3B7-fw-XnQ">
+                                <rect key="frame" x="0.0" y="162" width="393" height="53"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ecB-yW-yf3">
+                                        <rect key="frame" x="8" y="8" width="377" height="37"/>
+                                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <constraints>
+                                    <constraint firstItem="ecB-yW-yf3" firstAttribute="trailing" secondItem="3B7-fw-XnQ" secondAttribute="trailingMargin" id="2Cr-VE-L6A"/>
+                                    <constraint firstItem="ecB-yW-yf3" firstAttribute="centerY" secondItem="3B7-fw-XnQ" secondAttribute="centerY" id="Eum-dn-Hu9"/>
+                                    <constraint firstItem="ecB-yW-yf3" firstAttribute="bottom" secondItem="3B7-fw-XnQ" secondAttribute="bottomMargin" id="TsS-f3-KGG"/>
+                                    <constraint firstItem="ecB-yW-yf3" firstAttribute="leading" secondItem="3B7-fw-XnQ" secondAttribute="leadingMargin" id="X07-5R-AXA"/>
+                                    <constraint firstItem="ecB-yW-yf3" firstAttribute="centerX" secondItem="3B7-fw-XnQ" secondAttribute="centerX" id="ZEe-eO-SYM"/>
+                                    <constraint firstItem="ecB-yW-yf3" firstAttribute="top" secondItem="3B7-fw-XnQ" secondAttribute="topMargin" id="aUr-VD-X1h"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="bwn-My-WMA"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="AoH-h2-tsF"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -94,13 +110,10 @@
                                 <action selector="editProfileTapped:" destination="BYZ-38-t0r" id="qhR-VW-lL4"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="teO-el-w44">
-                            <connections>
-                                <action selector="addContactTapped:" destination="BYZ-38-t0r" id="94c-Qv-cte"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="addContact" destination="FnY-x3-uSf" id="6vD-6p-fdI"/>
                         <outlet property="filterStackView" destination="ecB-yW-yf3" id="Zqh-i1-XHC"/>
                         <outlet property="tableView" destination="Q0g-EE-G87" id="5lM-5k-YGA"/>
                     </connections>
@@ -244,6 +257,52 @@
             </objects>
             <point key="canvasLocation" x="2766" y="753"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="6vV-Kz-qX3">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="Tvg-bq-I9W" customClass="LoginViewController" customModule="Contacts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c27-tK-JUB">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lgk-Cj-YLn">
+                                <rect key="frame" x="141" y="326" width="84" height="68.666666666666686"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RRs-PP-iQl">
+                                        <rect key="frame" x="0.0" y="0.0" width="84" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
+                                        <connections>
+                                            <action selector="signUpTapped:" destination="Tvg-bq-I9W" eventType="touchUpInside" id="wAb-9z-mc3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5r-9W-jli">
+                                        <rect key="frame" x="0.0" y="34.333333333333314" width="84" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Login"/>
+                                        <connections>
+                                            <action selector="loginTapped:" destination="Tvg-bq-I9W" eventType="touchUpInside" id="dcr-ES-aqM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Igz-XG-gLZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lgk-Cj-YLn" firstAttribute="top" secondItem="Igz-XG-gLZ" secondAttribute="top" constant="208" id="vGS-bJ-4Li"/>
+                            <constraint firstItem="lgk-Cj-YLn" firstAttribute="leading" secondItem="Igz-XG-gLZ" secondAttribute="leading" constant="141" id="xNG-lH-qWn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginButton" destination="a5r-9W-jli" id="3c8-A5-4bA"/>
+                        <outlet property="signUpButton" destination="RRs-PP-iQl" id="XPw-hy-FgU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yFW-jF-ZgR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1880" y="30"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="7JV-6G-LNy">
             <objects>
@@ -302,6 +361,18 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
