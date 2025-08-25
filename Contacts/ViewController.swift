@@ -291,4 +291,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         sceneDelegate.window?.rootViewController = loginVC
         sceneDelegate.window?.makeKeyAndVisible()   //makes the app's window the "key" window
     }
+    
+    //Make the add contact button float above all other objects
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        view.bringSubviewToFront(addContact)
+    }
 }
