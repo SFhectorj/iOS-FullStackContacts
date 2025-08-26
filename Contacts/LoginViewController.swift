@@ -28,18 +28,9 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let sceneDelegate = windowScene.delegate as? SceneDelegate,
-              let mainVC = storyboard?.instantiateViewController(withIdentifier: "MainViewController") as? ViewController else {
-            return
+        if let formVC = storyboard?.instantiateViewController(withIdentifier: "LoginFormViewController") as? LoginFormViewController {
+            navigationController?.pushViewController(formVC, animated: true)
         }
-        
-        // Wrap MainViewController in a Navigation Controller
-        let navController = UINavigationController(rootViewController: mainVC)
-        
-        // Make it the new root
-        sceneDelegate.window?.rootViewController = navController
-        sceneDelegate.window?.makeKeyAndVisible()
     }
     
     @objc func logoutTapped() {
