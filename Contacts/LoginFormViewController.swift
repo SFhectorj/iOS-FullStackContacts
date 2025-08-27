@@ -32,7 +32,8 @@ class LoginFormViewController: UIViewController {
                            !(passwordTextField.text?.isEmpty ?? true)
         
         loginButton.isEnabled = isFormFilled
-        loginButton.backgroundColor = isFormFilled ? .systemBlue : .systemGray4
+        loginButton.backgroundColor = isFormFilled ? .systemGreen : .systemGray4
+        loginButton.titleLabel?.textColor = isFormFilled ? .white : .label
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
@@ -47,6 +48,7 @@ class LoginFormViewController: UIViewController {
         navController.modalPresentationStyle = .fullScreen
         
         // Replace rootViewController with the navController
+        // Resets navigation stack
         sceneDelegate.window?.rootViewController = navController
         sceneDelegate.window?.makeKeyAndVisible()
     }

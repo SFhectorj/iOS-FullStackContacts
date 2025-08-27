@@ -283,12 +283,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let sceneDelegate = windowScene.delegate as? SceneDelegate,
               // Create a new instance of loginviewcontroller; Used to return to log in screen
-              let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") else {
+              let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {
             return
         }
         
+        let navController = UINavigationController(rootViewController: loginVC)
+        
         //Logout logic sets the app’s main window’s rootViewController to the loginVC, effectively logging the user out and removing previous screens.
-        sceneDelegate.window?.rootViewController = loginVC
+        sceneDelegate.window?.rootViewController = navController
         sceneDelegate.window?.makeKeyAndVisible()   //makes the app's window the "key" window
     }
     

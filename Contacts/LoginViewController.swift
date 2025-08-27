@@ -16,9 +16,11 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         // Style buttons
-        //signUpButton.setTitleColor(.systemBlue, for: .normal)
-        //loginButton.setTitleColor(.white, for: .normal)
-        //loginButton.backgroundColor = .systemBlue
+        signUpButton.setTitleColor(.black, for: .normal)
+        signUpButton.backgroundColor = .white
+        signUpButton.layer.cornerRadius = 8
+        loginButton.setTitleColor(.black, for: .normal)
+        loginButton.backgroundColor = .white
         loginButton.layer.cornerRadius = 8
     }
     
@@ -36,11 +38,12 @@ class LoginViewController: UIViewController {
     @objc func logoutTapped() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let sceneDelegate = windowScene.delegate as? SceneDelegate,
-              let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") else {
+              let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {
             return
         }
         
-        sceneDelegate.window?.rootViewController = loginVC
+        let navController = UINavigationController(rootViewController: loginVC)
+        sceneDelegate.window?.rootViewController = navController
         sceneDelegate.window?.makeKeyAndVisible()
     }
 }
