@@ -25,8 +25,9 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func signUpTapped(_ sender: UIButton) {
-        // For now: do nothing
-        print("Sign Up tapped")
+        if let signUpVC = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController {
+            navigationController?.pushViewController(signUpVC, animated: true)
+        }
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
